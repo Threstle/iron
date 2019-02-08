@@ -1,0 +1,15 @@
+{
+  "name": "iron",
+  "version": "0.0.1",
+  "description": "",
+  "repository": "",
+  "main": "app.js",
+  "dependencies": {
+    "readline": "^1.3.0"
+  },
+  "author": "Etienne Chaumont",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.3.1"
+  }
+}

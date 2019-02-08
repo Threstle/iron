@@ -1,0 +1,23 @@
+{
+  "verbs":[
+    "look",
+    "use",
+    "move",
+    "go",
+    "walk",
+    "help",
+    "attack",
+    "drop",
+    "take",
+    "push",
+    "pull"
+  ],
+  "errors":{
+    "invalid":"invalid action",
+    "invalidLook":"there's nothing that looks like it",
+    "invalidDirection":"you can't go there"
+  },
+  "system":{
+    "help":"* look : look at a room|object\n * use : use an object, alone or on something -> use X on Y \n * move : go in a direction -> move north/south/etc \n"
+  }
+}

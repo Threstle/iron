@@ -64,13 +64,59 @@ class WorldInterface{
 
 
         }
-        else
+        else if(this.getObjectFromRoom(pObject1)[pVerb])
         {
-            if(system[pVerb])answer = system[pVerb];
+            let action = this.getObjectFromRoom(pObject1)[pVerb];
+
+
+            action.effects.map((effect,i)=>{
+                this.applyEffect(effect);
+            });
+
+            answer = action.answer;
         }
+        else if(system[pVerb])
+        {
+            answer = system[pVerb];
+        }
+
 
         return answer;
     }
+
+    applyEffect (pEffect)
+    {
+
+        let effectArray = pEffect.split(" ");
+
+        if(effectArray[0] == "state")
+        {
+            const type = effectArray[1];
+            const target = effectArray[2];
+            const state = effectArray[3];
+
+            this.changeState(type,target,state);
+
+        }
+    }
+
+    changeState (pType,pTarget,pState)
+    {
+        if(pType == "room")
+        {
+            const room = this.rooms[this.getRoomNumberFromId(pTarget)];
+
+            const state  =
+
+            this.getStateFromId(room,pState).action();
+        }
+        else
+        {
+            //TODO: objets
+        }
+    }
+
+    // ----------------------------------------------------------------------------------------------------------------- GETTERS
 
     getObjectFromRoom (pObject)
     {
@@ -88,6 +134,11 @@ class WorldInterface{
         const room = this.rooms.filter((room)=> room.id == pId)[0];
 
         return this.rooms.indexOf(room);
+    }
+
+    getStateFromId (pTarget,pStateId)
+    {
+        return pTarget.states.filter((state)=> state.id == pStateId)[0];
     }
 
 }

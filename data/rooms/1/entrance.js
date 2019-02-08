@@ -8,7 +8,16 @@ module.exports =
 
         {
             id: "sword",
-            description: "a rusty old sword"
+            description: "a rusty old sword",
+            take:
+            {
+                effects:
+                [
+                    "state room entrance sword-taken"
+                   // "inventory add item-sword",
+                ],
+                answer: "you take the sword and put it in your bag. It's rusty and smooth"
+            }
         },
 
         {
@@ -28,15 +37,15 @@ module.exports =
 
     ],
 
-    interactions:
+    states:
     [
         {
-            id:"test",
-            state:()=>{
+            id:"sword-taken",
+            action:()=>{
 
-                this.description = "in front of you is a stone wall, behind you is a stone wall. You get the idea. There's a passage going north"
+                module.exports.description = "It's the room where you found the sword. In front of you is a stone wall, behind you is a stone wall. You get the idea. There's a passage going north"
 
-                this.objects = this.objects.filter((objet)=>objet.id != "sword")
+                module.exports.objects = module.exports.objects.filter((objet)=>objet.id != "sword")
             }
         }
     ]

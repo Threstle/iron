@@ -39,6 +39,8 @@
   },
   "game": {
     "inventory": "in your bag you can see the following objects : ",
+    "add": " was added to your inventory",
+    "remove": " was discarded from your inventory",
     "emptyInventory": "your bag is empty",
     "take": "you take the "
   }

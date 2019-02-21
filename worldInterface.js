@@ -19,9 +19,9 @@ class WorldInterface{
 
     interpret (pSemanticDatas)
     {
+
         const verb = pSemanticDatas.verb;
         const subjects = pSemanticDatas.subjects;
-
         if(this[verb])
         {
             return this[verb](subjects);
@@ -29,12 +29,23 @@ class WorldInterface{
         // Si pas de fonction définie on va en chercher une sur l'objet
         else
         {
-            //console.log(mainSubject);
-            let mainSubject = this.getDirectionFromRoom(subjects[0]) || this.getObjectFromBag(subjects[1]);
+            let mainSubject = this.getObjectFromRoom(subjects[0]) || this.getObjectFromBag(subjects[1]);
 
-            if(subjects.length == 1)
+            let mainSubjectState = mainSubject.states[mainSubject.currentState];
+
+            if(mainSubjectState[verb])
             {
+                mainSubjectState[verb].effects.map((effect)=>{
+                    this.applyEffect(effect);
+                })
 
+                return mainSubjectState[verb].answer;
+            }
+            else
+            {
+                //TODO : erreur
+                console.log(mainSubject);
+                return "sseffe";
             }
         }
 
@@ -61,7 +72,13 @@ class WorldInterface{
 
             room.objects.map((object)=>{
 
-                answer+= " "+ object.states[object.currentState].roomDescription;
+                let objectDescription = object.states[object.currentState].roomDescription;
+
+                if(objectDescription.length>0)
+                {
+                    answer+= " "+ object.states[object.currentState].roomDescription;
+                }
+
 
             });
 
@@ -75,9 +92,12 @@ class WorldInterface{
 
             if(this.character.bagIsEmpty())answer = game.emptyInventory;
 
-            this.character.inventory.map((item)=>{
-                answer += item.states[item.currentState].name
+            this.character.inventory.map((item,index)=>{
+                answer += "["+item.states[item.currentState].name +"]";
+
+                if(index!=this.character.inventory.length-1)answer+=", "
             });
+
         }
         else
         {
@@ -119,7 +139,6 @@ class WorldInterface{
     use (pSubjects)
     {
         const errors = dictionnary.errors;
-        const game = dictionnary.game;
         const subject = pSubjects[0];
 
         let answer = errors.invalidUse;
@@ -135,7 +154,9 @@ class WorldInterface{
                pSubjects[1] == useConditions.requiredSubject
             )
             {
-                this.applyEffect(useConditions.effect);
+                useConditions.effects.map((effect)=>{
+                    this.applyEffect(effect);
+                });
 
                 answer = useConditions.answer;
             }
@@ -148,7 +169,6 @@ class WorldInterface{
     move (pSubjects)
     {
         const errors = dictionnary.errors;
-        const game = dictionnary.game;
         const subject = pSubjects[0];
 
         let answer = errors.invalidDirection;
@@ -174,6 +194,11 @@ class WorldInterface{
         this.character.inventory.push(this.getItemFromId(pItemId));
     }
 
+    removeFromInventory (pItemId)
+    {
+        this.character.inventory = this.character.inventory.filter((item)=> item.id != pItemId);
+    }
+
     removeFromRoom (pObjectId)
     {
         const room = this.rooms[this.currentRoom];
@@ -183,10 +208,13 @@ class WorldInterface{
 
     applyEffect (pEffect)
     {
+        let answer = "";
 
         let effectArray = pEffect.split(" ");
 
-        if(effectArray[0] == "action")
+        const group = effectArray[0];
+
+        if(group == "action")
         {
             const type = effectArray[1];
             const target = effectArray[2];
@@ -198,21 +226,23 @@ class WorldInterface{
                 this.applyRoomAction(target,action);
             }
         }
-        /*else if(effectArray[0] == "inventory")
+        else if(group == "inventory")
         {
-            if(effectArray[1] == "add")
+            const effect = effectArray[1];
+            const target = effectArray[2];
+
+            if(effect == "add")
             {
-                this.character.inventory.push(this.getItemFromId(effectArray[2]));
 
             }
-            else if(effectArray[1] == "remove")
+            else if(effect == "remove")
             {
-                const index = this.character.inventory.indexOf(effectArray[2]);
-
-                this.character.inventory.splice(index,1);
+                this.removeFromInventory(target);
             }
+        }
 
-        }*/
+        return answer;
+
     }
 
     applyRoomAction (pRoomId,pActionId)
@@ -220,19 +250,6 @@ class WorldInterface{
         this.getRoomActionFromId(pActionId,pRoomId).action();
     }
 
-    /*changeState (pType,pTarget,pState)
-    {
-        if(pType == "room")
-        {
-            const room = this.rooms[this.getRoomNumberFromId(pTarget)];
-
-            const state = this.getStateFromId(room,pState).action();
-        }
-        else
-        {
-            //TODO: objets
-        }
-    }*/
 
     // ----------------------------------------------------------------------------------------------------------------- GETTERS
 

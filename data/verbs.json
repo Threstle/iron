@@ -29,6 +29,12 @@
       "subjects": 1,
       "canBeUsedAlone": false,
       "error": "you can't take that"
+    },
+    {
+      "verb": "search",
+      "subjects": 1,
+      "canBeUsedAlone": false,
+      "error": "you cannot search that"
     }
   ]
 }

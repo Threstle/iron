@@ -27,7 +27,7 @@ module.exports =
       {
         requiredSubject:"metal door",
         requiredRoom:"entrance",
-        effect:"action room entrance open-door",
+        effects:["action room entrance open-door","inventory remove item-rusty-key"],
         answer:"the key turns into the lock. You hear a click and the door opens"
       }
 

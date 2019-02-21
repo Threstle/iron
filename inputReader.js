@@ -24,10 +24,17 @@ class InputReader{
     analyse (pLine,pOnLine)
     {
         // On transforme l'input en tableau de mots
-        let inputArray = pLine.split(" ");
+        let inputArray = pLine.toLowerCase().split(" ");
 
         // On récupère les infos du verbe, toujours en première partie de la phrase
-        const verb = this.getVerbByName(inputArray[0]);
+        let verb = this.getVerbByName(inputArray[0]);
+
+        // si on a pas de verbe on prend look par défaut
+        if(!verb)
+        {
+            inputArray.unshift("look");
+            verb = this.getVerbByName("look");
+        }
 
         let semanticDatas = {
             verb : verb.verb

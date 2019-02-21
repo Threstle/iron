@@ -1,0 +1,34 @@
+{
+  "list":[
+    {
+      "verb": "look",
+      "subjects": 1,
+      "canBeUsedAlone": true,
+      "error": "there's nothing there"
+    },
+    {
+      "verb": "use",
+      "subjects": 2,
+      "preposition": "with",
+      "canBeUsedAlone": false,
+      "error": "you can't do that"
+    },
+    {
+      "verb": "move",
+      "subjects": 1,
+      "canBeUsedAlone": false,
+      "error": "you can't go there"
+    },
+    {
+      "verb": "help",
+      "subjects": 0,
+      "canBeUsedAlone": false
+    },
+    {
+      "verb": "take",
+      "subjects": 1,
+      "canBeUsedAlone": false,
+      "error": "you can't take that"
+    }
+  ]
+}

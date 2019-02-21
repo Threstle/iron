@@ -1,12 +1,12 @@
 const InputReader       = require('./inputReader');
-const WorldInterface   = require('./worldInterface');
+const WorldInterface    = require('./worldInterface');
 
 let inputReader = new InputReader();
 
-inputReader.init((pInput)=>{
+inputReader.init((pSemanticDatas)=>{
 
-    const answer = worldInterface.interpret(pInput[0],pInput[1],pInput[2]);
-
+    const answer = worldInterface.interpret(pSemanticDatas);
+//
     console.log('----> '+ answer);
 });
 
@@ -14,4 +14,8 @@ let worldInterface = new WorldInterface();
 
 worldInterface.init();
 
-console.log('----> '+ worldInterface.interpret("look","room"));
+
+console.log('----> '+ worldInterface.interpret({
+    verb:"look",
+    subjects:[]
+}));

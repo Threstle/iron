@@ -1,6 +1,6 @@
-const rooms          = require('./data/rooms/rooms');
-const items          = require('./data/items');
-const dictionnary    = require('./data/dictionnary');
+const rooms             = require('./data/rooms/rooms');
+const items             = require('./data/items');
+const dictionnary       = require('./data/dictionnary');
 const Character 	    = require('./character');
 const characterData     = require('./data/character');
 
@@ -176,6 +176,7 @@ class WorldInterface{
 
         const direction = this.getDirectionFromRoom(subject);
 
+
         if(direction && direction.open)
         {
             this.currentRoom = this.getRoomNumberFromId(direction.to);
@@ -265,7 +266,20 @@ class WorldInterface{
 
     getDirectionFromRoom (pDirection)
     {
-        return this.rooms[this.currentRoom].directions.filter((direction)=> direction.id == pDirection)[0];
+        let directionChosen;
+
+        this.rooms[this.currentRoom].directions.map((direction)=>{
+
+            direction.names.map((name)=>{
+                if(name == pDirection)
+                {
+                    directionChosen = direction;
+                }
+            });
+
+        });
+
+        return directionChosen;
     }
 
     getRoomActionFromId (pActionId, pRoomId)

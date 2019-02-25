@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b24c7cb1-733b-4e1c-8d24-5aef798c227b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/data/rooms/2/area1_pit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/dictionnary.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/dictionnary.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/items.js" beforeDir="false" afterPath="$PROJECT_DIR$/data/items.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/rooms/1/entrance.js" beforeDir="false" afterPath="$PROJECT_DIR$/data/rooms/1/old_entrance.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/rooms/2/testchamber1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/rooms/rooms.js" beforeDir="false" afterPath="$PROJECT_DIR$/data/rooms/rooms.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/verbs.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/verbs.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inputReader.js" beforeDir="false" afterPath="$PROJECT_DIR$/inputReader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/rooms/1/entrance.js" beforeDir="false" afterPath="$PROJECT_DIR$/data/rooms/1/entrance.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/rooms/2/area1_pit.js" beforeDir="false" afterPath="$PROJECT_DIR$/data/rooms/2/area1_pit.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/worldInterface.js" beforeDir="false" afterPath="$PROJECT_DIR$/worldInterface.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,7 +17,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/inputReader.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="639">
+            <state relative-caret-position="398">
               <caret line="44" selection-start-line="44" selection-end-line="44" />
             </state>
           </provider>
@@ -53,17 +44,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/worldInterface.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="45" column="31" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+            <state relative-caret-position="1147">
+              <caret line="281" column="31" lean-forward="true" selection-start-line="281" selection-start-column="31" selection-end-line="281" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -71,8 +53,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/rooms/1/entrance.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="886">
-              <caret line="85" column="304" selection-start-line="85" selection-start-column="304" selection-end-line="85" selection-end-column="304" />
+            <state relative-caret-position="483">
+              <caret line="82" column="29" lean-forward="true" selection-start-line="82" selection-start-column="29" selection-end-line="82" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -89,8 +71,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data/rooms/2/area1_pit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="519">
-              <caret line="40" column="61" selection-start-line="40" selection-start-column="61" selection-end-line="40" selection-end-column="61" />
+            <state relative-caret-position="393">
+              <caret line="100" column="24" selection-start-line="100" selection-start-column="24" selection-end-line="100" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -98,15 +80,6 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/rooms/2/area1_alcove.js">
           <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/dictionnary.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="42" column="34" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
-            </state>
-          </provider>
         </entry>
       </file>
     </leaf>
@@ -121,6 +94,7 @@
       <find>consol</find>
       <find>entrance</find>
       <find>applyE</find>
+      <find>direct</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -135,13 +109,13 @@
         <option value="$PROJECT_DIR$/data/rooms/2/testchamber1.js" />
         <option value="$PROJECT_DIR$/data/items.js" />
         <option value="$PROJECT_DIR$/data/dictionnary.json" />
-        <option value="$PROJECT_DIR$/data/rooms/1/entrance.js" />
         <option value="$PROJECT_DIR$/data/rooms/2/pit1.js" />
         <option value="$PROJECT_DIR$/data/rooms/rooms.js" />
         <option value="$PROJECT_DIR$/data/verbs.json" />
         <option value="$PROJECT_DIR$/inputReader.js" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/worldInterface.js" />
+        <option value="$PROJECT_DIR$/data/rooms/1/entrance.js" />
         <option value="$PROJECT_DIR$/data/rooms/2/area1_pit.js" />
       </list>
     </option>
@@ -156,7 +130,28 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="ProjectPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="iron" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iron" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iron" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iron" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="iron" type="b2602c69:ProjectViewProjectNode" />
+              <item name="iron" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="rooms" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -186,15 +181,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1550486787341</updated>
-      <workItem from="1550486791374" duration="24798000" />
+      <workItem from="1550486791374" duration="28039000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24798000" />
+    <option name="totallyTimeSpent" value="28039000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24248926" />
@@ -259,10 +255,13 @@
     <entry file="file://$PROJECT_DIR$/data/rooms/2/area1_alcove.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/rooms/rooms.js">
+    <entry file="file://$PROJECT_DIR$/room.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inputReader.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="16" lean-forward="true" selection-start-column="16" selection-end-column="16" />
+        <state relative-caret-position="398">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
         </state>
       </provider>
     </entry>
@@ -273,13 +272,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inputReader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="639">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -287,24 +279,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/data/rooms/rooms.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="16" lean-forward="true" selection-start-column="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/worldInterface.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="45" column="31" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
+        <state relative-caret-position="1147">
+          <caret line="281" column="31" lean-forward="true" selection-start-line="281" selection-start-column="31" selection-end-line="281" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data/rooms/1/entrance.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="886">
-          <caret line="85" column="304" selection-start-line="85" selection-start-column="304" selection-end-line="85" selection-end-column="304" />
+        <state relative-caret-position="483">
+          <caret line="82" column="29" lean-forward="true" selection-start-line="82" selection-start-column="29" selection-end-line="82" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data/rooms/2/area1_pit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
-          <caret line="40" column="61" selection-start-line="40" selection-start-column="61" selection-end-line="40" selection-end-column="61" />
+        <state relative-caret-position="393">
+          <caret line="100" column="24" selection-start-line="100" selection-start-column="24" selection-end-line="100" selection-end-column="24" />
         </state>
       </provider>
     </entry>

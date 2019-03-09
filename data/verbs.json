@@ -16,7 +16,7 @@
     {
       "verb": "move",
       "subjects": 1,
-      "canBeUsedAlone": false,
+      "canBeUsedAlone": true,
       "error": "you can't go there"
     },
     {
@@ -35,6 +35,12 @@
       "subjects": 1,
       "canBeUsedAlone": false,
       "error": "you cannot search that"
+    },
+    {
+      "verb": "jump",
+      "subjects": 1,
+      "canBeUsedAlone": true,
+      "error": "you jump, to no effect"
     }
   ]
 }

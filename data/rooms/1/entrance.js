@@ -82,7 +82,7 @@ module.exports =
                 {
                     id:"down",
                     "names":["down"],
-                    "to":"pit1",
+                    "to":"area1_pit",
                     "open":true,
                     "answer":"you nod toward the man handling the mechanism and, as he begin to work the crank, the basket you're standing in is lowered inside the dark hole. After a some time, you feel a light shock as it touches the ground. You step outside, ready to face the dangers of the catacombs."
                 }
@@ -92,6 +92,9 @@ module.exports =
         actions:
             [
 
-            ]
+            ],
+
+        // ------------------------------------------------------------------------------------------------------------- HOOKS
+
 
     };

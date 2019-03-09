@@ -14,21 +14,21 @@ module.exports =
       ]
     },
     {
-      id:"item-rusty-key",
+      id:"item-plank",
       type:"item",
       currentState: 0,
       states:[
         {
-          name: "rusty key",
-          description: "a rusty old key. You wonder what it's for...",
+          name: "plank",
+          description: "an old plank. Could be used as a bridge...",
         }
       ],
       use:
       {
-        requiredSubject:"metal door",
-        requiredRoom:"entrance",
-        effects:["action room entrance open-door","inventory remove item-rusty-key"],
-        answer:"the key turns into the lock. You hear a click and the door opens"
+        requiredSubject:"river",
+        requiredRoom:"area2_river",
+        effects:["action room area2_river bridge-water","inventory remove item-plank"],
+        answer:"you put the plank on the water"
       }
 
     }

@@ -1,4 +1,5 @@
 const rooms             = require('./data/rooms/rooms');
+const events            = require('./data/events/events');
 const items             = require('./data/items');
 const dictionnary       = require('./data/dictionnary');
 const Character 	    = require('./character');
@@ -14,7 +15,9 @@ class WorldInterface{
         this.character = new Character(characterData.defaultStats);
 
         this.rooms = rooms;
+        this.events = events;
         this.currentRoom = 0;
+        this.currentEvent = null;
     };
 
     interpret (pSemanticDatas)
@@ -22,7 +25,44 @@ class WorldInterface{
 
         const verb = pSemanticDatas.verb;
         const subjects = pSemanticDatas.subjects;
-        if(this[verb])
+
+        // En premier on vérifie si il y a un event en cours
+        if(this.currentEvent)
+        {
+            let answer = "";
+
+            const escapeWords = this.currentEvent.escapeWords;
+
+            // En cas de victoire
+            if(escapeWords.includes(verb))
+            {
+                const effectAnswer = this.applyEffect(this.currentEvent.successEffect);
+                answer = this.currentEvent.successDescription + " " + effectAnswer;
+                this.currentEvent = null;
+
+                return answer;
+            }
+
+            // On passe au step suivant
+            this.currentEvent.currentStep++;
+
+            // En cas d'échec
+            if(this.currentEvent.currentStep >= this.currentEvent.steps.length)
+            {
+                const effectAnswer = this.applyEffect(this.currentEvent.failEffect);
+                answer = this.currentEvent.failDescription +" "+ effectAnswer;
+                this.currentEvent = null;
+
+                return answer;
+            }
+
+            answer = "@"+this.currentEvent.steps[this.currentEvent.currentStep]+"#";
+
+
+
+            return answer;
+        }
+        else if(this[verb])
         {
             return this[verb](subjects);
         }
@@ -35,16 +75,17 @@ class WorldInterface{
 
             if(mainSubjectState[verb])
             {
-                mainSubjectState[verb].effects.map((effect)=>{
-                    this.applyEffect(effect);
-                })
+                let effectsAnswer = "";
 
-                return mainSubjectState[verb].answer;
+                mainSubjectState[verb].effects.map((effect)=>{
+                    effectsAnswer+= " "+this.applyEffect(effect);
+                });
+
+                return mainSubjectState[verb].answer + effectsAnswer;
             }
             else
             {
                 //TODO : erreur
-                console.log(mainSubject);
                 return "sseffe";
             }
         }
@@ -145,8 +186,7 @@ class WorldInterface{
 
         let mainObject = this.getObjectFromRoom(subject) || this.getObjectFromBag(subject);
 
-
-        if(mainObject.use)
+        if(mainObject != undefined && mainObject.use)
         {
             let useConditions = mainObject.use;
 
@@ -173,20 +213,49 @@ class WorldInterface{
 
         let answer = errors.invalidDirection;
 
-
+        // On récupère la direction voulue par le joueur
         const direction = this.getDirectionFromRoom(subject);
 
-
+        // Si la direction existe et qu'elle ouverte
         if(direction && direction.open)
         {
+            // On lance l'event de la room sortante si il y en a un
+            answer = this.launchRoomEvent(this.currentRoom,"onLeave");
+
+            // On met à jour currentRoom
             this.currentRoom = this.getRoomNumberFromId(direction.to);
 
-            answer = direction.answer;
+            // On construit la réponse
+            answer+= direction.answer + "\n\n" + this.rooms[this.currentRoom].description;
+
+            // On lance l'event de la room entrante si il y en a un
+            answer += this.launchRoomEvent(this.currentRoom,"onEnter");
+
+
         }
 
         return answer;
     }
 
+    launchRoomEvent (pRoomNumber,pEvent)
+    {
+        let answer = "";
+
+        let room = this.rooms[pRoomNumber];
+
+        if(!room[pEvent])return answer;
+
+        // Si l'event est sensé se répéter, où qu'il n'a pas été encore déclenché
+        if(room[pEvent].repeat || !room[pEvent].done )
+        {
+            // On lance l'event de sortie de la room en court
+            answer = " "+this.applyEffect(room[pEvent].event);
+
+            room[pEvent].done = true;
+        }
+
+        return answer;
+    }
 
     // ----------------------------------------------------------------------------------------------------------------- EFFECTS
 
@@ -223,7 +292,6 @@ class WorldInterface{
 
             if(type == "room")
             {
-
                 this.applyRoomAction(target,action);
             }
         }
@@ -241,7 +309,23 @@ class WorldInterface{
                 this.removeFromInventory(target);
             }
         }
+        else if(group == "user")
+        {
+            const effect = effectArray[1];
 
+            if(effect == "die")
+            {
+                answer = this.die();
+            }
+        }
+        else if(group == "event")
+        {
+            const event = effectArray[1];
+
+            this.currentEvent = this.getEventFromId(event);
+
+            answer = "@"+this.currentEvent.steps[this.currentEvent.currentStep]+"#";
+        }
         return answer;
 
     }
@@ -251,6 +335,17 @@ class WorldInterface{
         this.getRoomActionFromId(pActionId,pRoomId).action();
     }
 
+    checkEvent (pEvent)
+    {
+
+    }
+
+    // ----------------------------------------------------------------------------------------------------------------- USER
+
+    die ()
+    {
+        return "\n \n"+dictionnary.images.death;
+    }
 
     // ----------------------------------------------------------------------------------------------------------------- GETTERS
 
@@ -285,6 +380,11 @@ class WorldInterface{
     getRoomActionFromId (pActionId, pRoomId)
     {
         return this.rooms[this.getRoomNumberFromId(pRoomId)].actions.filter((action)=> action.id == pActionId)[0];
+    }
+
+    getEventFromId (pEventID)
+    {
+        return this.events.filter((event)=> event.id == pEventID)[0];
     }
 
     getRoomNumberFromId (pId)

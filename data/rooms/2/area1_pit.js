@@ -1,6 +1,6 @@
 module.exports =
 {
-    id: "pit1",
+    id: "area1_pit",
 
     description: "Above you the edge of the pit shines with sunlight that already feels like a distant memory. You lift your [torch] to scout your surroundings. You stand in a huge cave. Just below the mouth of the cave is a [pile of animal bones]. On the [north] wall you can see the opening of a [tunnel] dug in the black stone. You hear a faint sound of [running water] coming from it.",
 
@@ -17,7 +17,7 @@ module.exports =
                         roomDescription: "",
                         search:
                             {
-                                effects:["action room pit1 search-bones"],
+                                effects:["action room area1_pit search-bones"],
                                 answer:"you find nothing of interest among the remains, but as you're moving a deer skull you uncover a tiny [alcove] carven into the southern wall, previously hidden by the [pile of animal bones]"
                             }
                     }
@@ -92,17 +92,17 @@ module.exports =
         {
 
             id:"alcove",
-            name:["south","alcove"],
-            to:"alcove1",
+            names:["south","alcove"],
+            to:"area1_alcove",
             open: false,
-            answer:"you enter the alcove and shine your torch in it."
+            answer:"You enter the alcove and shine your torch in it."
         },
         {
             id:"tunnel",
             names:["north","tunnel"],
-            to:"river1",
-            open: false,
-            answer:"you enter the alcove and shine your torch in it."
+            to:"area2_river",
+            open: true,
+            answer:"You enter the tunnel. As you walk, the sound of water grows louder. After a few minutes you enter a vast cavern."
         }
     ],
 
@@ -118,5 +118,13 @@ module.exports =
 
                 }
             }
-        ]
+        ],
+
+    // ------------------------------------------------------------------------------------------------------------- HOOKS
+
+    onEnter:{
+        repeat:false,
+        done:false,
+        event:"event puzzle-blade"
+    }
 };
